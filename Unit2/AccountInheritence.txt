@@ -1,0 +1,43 @@
+package Unit2.Bank;
+
+public class Account extends Customer
+{
+    double balance;
+
+    Account(String firstName, String lastName, String street, String city, String state, String zip)
+    {
+        super(firstName, lastName, street, city, state, zip);
+    }
+    public void getBalance()
+    {
+        System.out.printf("Your balace is $%,.2f\n", balance);
+    }
+    public void getBalance(double balance)
+    {
+        System.out.printf("Your balace is $%,.2f\n", balance);
+    }
+    
+    public void deposit(double dep)
+    {
+        balance += dep;
+        System.out.printf("You depositted $%,.2f\n", dep);
+    }
+    public void withdrawal(double  withdraw)
+    {
+        if (withdraw <= balance)
+        {
+            balance -= withdraw;
+            System.out.printf("You withdrew $%,.2f\n", withdraw);
+        }
+        else
+            System.out.println("Not enough money in account.");
+    }
+    public String changeAddress(String street, String city, String state, String zip)
+    {
+        return super.changeStreet(street) + "\n" + super.changeCity(city) + ", " + super.changeState(state) + " " + super.changeZip(zip);
+    }
+    public String toString()
+    {
+        return super.toString() + "\nCurrent balance is $"+balance;
+    }
+}
